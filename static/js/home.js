@@ -7,7 +7,7 @@ $(function () {
         var theForm = $(this);
 
         $.getJSON('/carsearch', $(this).serialize(), function (data, status, jqXhr) {
-            var results = data
+            var results = data;
 
             $('#resultDiv .data-status').text(results.message);
 
