@@ -15,13 +15,13 @@ def index():
 
 @app.route('/carsearch', methods = ["GET"])
 def car_search():
-    print "Entering method car_search"
+    print("Entering method car_search")
 
-    year = request.args["year"] if request.args.has_key("year") else None
-    make = request.args["make"] if request.args.has_key("make") else None
-    model = request.args["model"] if request.args.has_key("model") else None
+    year = request.args["year"] if "year" in request.args else None
+    make = request.args["make"] if "make" in request.args else None
+    model = request.args["model"] if "model" in request.args else None
 
-    print "year: " + year + " make: " + make + " model: " + model
+    print("year: " + year + " make: " + make + " model: " + model)
 
     result = {"message": "No results"}
 

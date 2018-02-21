@@ -38,7 +38,7 @@ def data_by_year(year):
     """
     result = {}
 
-    if year and _YEAR_INDEX.has_key(year):
+    if year and year in _YEAR_INDEX:
         for i in _YEAR_INDEX[year]:
             result[_DATA[i]["id"]] = _DATA[i]
 
@@ -51,7 +51,7 @@ def data_by_make(make):
     """
     result = {}
 
-    if make and _MAKE_INDEX.has_key(make):
+    if make and make in _MAKE_INDEX:
         for i in _MAKE_INDEX[make]:
             result[_DATA[i]["id"]] = _DATA[i]
 
@@ -64,7 +64,7 @@ def data_by_model(model):
     """
     result = {}
 
-    if model and _MODEL_INDEX.has_key(model):
+    if model and model in _MODEL_INDEX:
         for i in _MODEL_INDEX[model]:
             result[_DATA[i]["id"]] = _DATA[i]
 
@@ -80,25 +80,25 @@ def filter_keys(year_data, make_data, model_data):
         return keys
 
     if year_data:
-        keys = year_data.viewkeys()
+        keys = year_data.keys()
 
         if make_data:
-            keys = keys & make_data.viewkeys()
+            keys = keys & make_data.keys()
 
             if model_data:
-                keys = keys & model_data.viewkeys()
+                keys = keys & model_data.keys()
 
         elif model_data:
-            keys = keys & model_data.viewkeys()
+            keys = keys & model_data.keys()
 
     elif make_data:
-        keys = make_data.viewkeys()
+        keys = make_data.keys()
 
         if model_data:
-            keys = keys & model_data.viewkeys()
+            keys = keys & model_data.keys()
 
     elif model_data:
-        keys = model_data.viewkeys()
+        keys = model_data.keys()
 
     return keys
 
@@ -139,7 +139,7 @@ def get_cars_by(year, make, model):
 
         if keys and data:
             for key in keys:
-                print "appending " + key + " into final result"
+                print("appending " + key + " into final result")
                 result.append(data[key])
     else:
         # no parameters passed so return all rows
